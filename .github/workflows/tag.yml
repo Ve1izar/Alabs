@@ -4,12 +4,15 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write
+
 jobs:
   tag:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
 
@@ -24,11 +27,19 @@ jobs:
       with:
         script: |
           const version = process.env.VERSION;
-          github.rest.git.createRef({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            ref: `refs/tags/v${version}`,
-            sha: context.sha
-          });
+          try {
+            await github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: `refs/tags/v${version}`,
+              sha: context.sha
+            });
+          } catch (error) {
+            if (error.status === 422) {
+              console.log(`Tag v${version} already exists.`);
+            } else {
+              throw error;
+            }
+          }
       env:
         VERSION: ${{ steps.version.outputs.version }}
