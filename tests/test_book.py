@@ -40,5 +40,6 @@ class TestBook(unittest.TestCase):
         self.book.increase_available()
         self.assertEqual(self.book.available_copies, 2)
 
+
 if __name__ == '__main__':
     unittest.main()
