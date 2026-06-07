@@ -6,7 +6,7 @@ class Observer(ABC):
     def update(self, book_title: str) -> None:
         pass
 
-# Інтерфейс для суб'єкта (видавця подій)
+
 class Subject(ABC):
     @abstractmethod
     def attach(self, observer: Observer) -> None:

@@ -4,9 +4,9 @@ import sys
 import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from library import Library # noqa: E402
-from book import Book # noqa: E402
-from interfaces import Observer # noqa: E402
+from library import Library  # noqa: E402
+from book import Book  # noqa: E402
+from interfaces import Observer  # noqa: E402
 
 
 class TestLibrary(unittest.TestCase):
