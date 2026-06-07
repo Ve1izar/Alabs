@@ -4,7 +4,8 @@ import sys
 import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from user import User, Reader
+from user import Reader # noqa: E402
+
 
 class TestUser(unittest.TestCase):
     def setUp(self):
@@ -21,8 +22,7 @@ class TestUser(unittest.TestCase):
     def test_update_notifies_reader(self, mock_print):
         """Перевірка, що метод update генерує правильне повідомлення"""
         self.reader.update("Clean Code")
-        # Перевіряємо, чи був викликаний print з правильним аргументом
-        mock_print.assert_called_once_with("[Reader UI] Андрій, у нас новинка! Доступна книга: 'Clean Code'")
+        mock_print.assert_called_once_with("[Reader UI] Андрій. Доступна книга: 'Clean Code'")
 
 if __name__ == '__main__':
     unittest.main()

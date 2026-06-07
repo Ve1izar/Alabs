@@ -3,7 +3,8 @@ import sys
 import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from book import Book
+from book import Book # noqa: E402
+
 
 class TestBook(unittest.TestCase):
     def setUp(self):
@@ -42,4 +43,3 @@ class TestBook(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-# коментар для тестування

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-# Інтерфейс для спостерігачів
+
 class Observer(ABC):
     @abstractmethod
     def update(self, book_title: str) -> None:

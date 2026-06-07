@@ -1,6 +1,7 @@
 from interfaces import Subject, Observer
 from book import Book
 
+
 class Library(Subject):
     _instance = None
 
